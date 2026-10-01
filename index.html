@@ -137,22 +137,29 @@
         .inv-slot.filled { background: white; border: 2px solid var(--primary); }
         .inv-slot.filled img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* --- PREVIEW MODAL (ปรับแก้ไม่ให้รูปใหญ่ล้นจอ) --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7); z-index: 100;
             display: none; align-items: center; justify-content: center;
             backdrop-filter: blur(5px);
+            padding: 20px; box-sizing: border-box;
         }
         .modal-card {
-            background: white; padding: 15px 15px 30px 15px;
-            border-radius: 10px; max-width: 280px; text-align: center;
+            background: white; padding: 20px 15px;
+            border-radius: 16px; max-width: 320px; width: 90%; text-align: center;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: zoomIn 0.3s ease;
+            max-height: 85vh; display: flex; flex-direction: column; align-items: center;
+            overflow-y: auto; box-sizing: border-box;
         }
-        .modal-card img { width: 100%; border-radius: 3px; margin-bottom: 10px; }
+        .modal-card img {
+            width: 100%; max-height: 50vh; object-fit: contain;
+            border-radius: 8px; margin-bottom: 12px;
+        }
         .btn-keep {
             background: var(--primary); color: white; border: none;
             padding: 10px 25px; border-radius: 30px; font-family: 'Kanit';
-            font-size: 1rem; cursor: pointer; margin-top: 15px;
+            font-size: 1rem; cursor: pointer; margin-top: 15px; flex-shrink: 0;
         }
         @keyframes zoomIn { from { transform: scale(0.5); } to { transform: scale(1); } }
 
@@ -232,7 +239,7 @@
     <div class="modal-overlay" id="previewModal">
         <div class="modal-card">
             <img src="" id="previewImg">
-            <p id="previewCaption" style="color:#555;">...</p>
+            <p id="previewCaption" style="color:#555; margin:0;">...</p>
             <button class="btn-keep" onclick="confirmKeep()">เก็บไว้ในใจ ❤️</button>
         </div>
     </div>
